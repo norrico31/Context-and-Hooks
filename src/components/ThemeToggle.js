@@ -4,8 +4,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
 class ThemeToggle extends Component {
     render() {
         return (
-            <ThemeContext.Consumer>
-                {(context) => {
+            <ThemeContext.Consumer>{(context) => {
 
                     const { toggleTheme } = context;
 
