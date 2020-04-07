@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'; // Added useContext
 import { ThemeContext } from '../contexts/ThemeContext';
+import { BookContext } from '../contexts/BookContext';
 
 // class BookList extends Component {
 //     static contextType = ThemeContext;
@@ -33,6 +34,8 @@ import { ThemeContext } from '../contexts/ThemeContext';
 // useContext
 const BookList = () => {
 
+    const { books } = useContext(BookContext);
+
     // useContext();
     const { isLightTheme, light, dark } = useContext(ThemeContext);
     const theme = isLightTheme ? light : dark ;
@@ -48,9 +51,13 @@ const BookList = () => {
     return (
         <div className="book-list" style={ booklistStyle }>
             <ul>
-                <li style={ liStyle }>The way of kings</li>
-                <li style={ liStyle }>The name of the wind</li>
-                <li style={ liStyle }>The final empire</li>
+
+                { books.map((book) => {
+                    return (
+                        <li style={ liStyle } key={ book.id }>{ book.title }</li>
+                    )
+                })}
+                
             </ul>
         </div>
     )
